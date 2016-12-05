@@ -1,14 +1,14 @@
 class PathFinder
-  def self.get_distance coordinates
+  def get_distance coordinates
     (coordinates[0]).abs + (coordinates[1]).abs
   end
 
-  def self.get_new_orientation from, to
+  def get_new_orientation from, to
     coordinates = [:north, :east, :south, :west]
     coordIndex = coordinates.index(from)
 
     if /L/.match(to)
-      coordIndex = coordIndex - 1 < 0 ? 3 : coordIndex -1
+      coordIndex = coordIndex - 1
       return coordinates[coordIndex]
     else
       coordIndex = coordIndex + 1 > 3 ? 0 : coordIndex + 1
@@ -16,13 +16,13 @@ class PathFinder
     end
   end
 
-  def self.get_coordinates coordinates
+  def get_coordinates coordinates
     orientation = :north
 
     final_coordinate = [0, 0]
 
     coordinates.split(", ").each do |move|
-      distance = move[1,1].to_i
+      distance = move.gsub(/R|L/, '').to_i
       orientation = get_new_orientation orientation, move
 
       if orientation == :east
@@ -39,7 +39,7 @@ class PathFinder
     final_coordinate
   end
 
-  def self.solve coordinates
+  def solve coordinates
     final_position = get_coordinates coordinates
     get_distance final_position
   end
