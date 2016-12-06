@@ -2,7 +2,7 @@ require_relative '../../day2/ex1/bathroomcode'
 
 RSpec.describe BathroomCode do
   subject { described_class.new }
-  context '#get_coordinates' do
+  context '#find_next_step' do
     it { expect(subject.find_next_step 5, '').to eq(5) }
     it { expect(subject.find_next_step 4, 'L').to eq(4) }
     it { expect(subject.find_next_step 5, 'L').to eq(4) }
