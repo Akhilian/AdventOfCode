@@ -1,5 +1,5 @@
-require_relative '../../day3/ex1/Triangle'
-require_relative '../../day3/ex1/DesignDepartment'
+require_relative '../../../day3/ex1/Triangle'
+require_relative '../../../day3/ex1/DesignDepartment'
 
 RSpec.describe DesignDepartment do
   let(:design_department) { described_class.new init_value }
@@ -32,7 +32,7 @@ RSpec.describe DesignDepartment do
     context "when the file is small test" do
       it "should load triangles from file" do
         design_department = described_class.new
-        design_department.from_file 'spec/day3/test.txt'
+        design_department.from_file 'spec/day3/ex1/test.txt'
 
         expect(design_department.triangles.size).to eq(6)
         expect(design_department.get_valid.size).to eq(4)
