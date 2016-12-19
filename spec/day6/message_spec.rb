@@ -31,4 +31,26 @@ RSpec.describe Message do
       it { is_expected.to eq("afwlyyyq")}
     end
   end
+
+  describe "#decrypt_modified" do
+    subject { message.decrypt_modified }
+    context "with the initial example" do
+      let (:init_value) { ["eedadn", "drvtee", "eandsr", "raavrd", "atevrs", "tsrnev", "sdttsa", "rasrtv", "nssdts",
+        "ntnada", "svetve", "tesnvt", "vntsnd", "vrdear", "dvrsen", "enarar"] }
+      it { is_expected.to eq("advent")}
+    end
+
+    context "with exercise data" do
+      input = []
+
+      before(:all) do
+        File.foreach('./spec/day6/input.txt') do |line|
+          input.push(line.chomp)
+        end
+      end
+
+      let (:init_value) { input }
+      it { is_expected.to eq("afwlyyyq")}
+    end
+  end
 end
